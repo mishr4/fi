@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Mishra Corporation — TMC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f2f2f4;--white:#fff;--text:#16162a;--text-2:#4a4a5e;--text-3:#8a8a9e;
+  --navy:#0d1730;--navy-2:#162040;--red:#d4213a;--red-dark:#b01a2e;--cyan:#009de0;
+  --border:#e2e2e8;--border-2:#ededf0;
+  --shadow:0 1px 3px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.03);
+  --shadow-h:0 2px 8px rgba(0,0,0,.07),0 8px 24px rgba(0,0,0,.06);
+  --r:5px;--max:1200px;
+  --font:'Inter',sans-serif;--mono:'IBM Plex Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:#0055d4;text-decoration:none;transition:color .15s}
+a:hover{color:var(--red)}
+::-webkit-scrollbar{width:7px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#c8c8d0;border-radius:4px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--white);border-bottom:1px solid var(--border);height:52px;display:flex;align-items:center;padding:0 24px}
+.n-inner{max-width:var(--max);width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.n-brand{display:flex;align-items:center}
+.n-brand img{height:22px;width:auto;filter:brightness(0);transition:opacity .15s}
+.n-brand img:hover{opacity:.7}
+.n-links{display:flex;gap:2px;list-style:none}
+.n-links a{font-size:.8rem;font-weight:500;color:var(--text-2);padding:6px 14px;border-radius:var(--r);transition:all .15s}
+.n-links a:hover{color:var(--text);background:var(--bg)}
+.n-links a.active{color:var(--text);font-weight:600}
+.n-ham{display:none;background:none;border:none;cursor:pointer;padding:4px}
+.n-ham span{display:block;width:18px;height:2px;background:var(--text);margin:4px 0;transition:all .2s}
+.red-strip{height:3px;background:var(--red);margin-top:52px}
+
+/* HERO — light background for black TMC logo */
+.hero{
+  background:var(--white);padding:64px 24px 52px;text-align:center;
+  position:relative;border-bottom:1px solid var(--border);
+}
+.hero-logo{height:clamp(60px,12vw,100px);width:auto;margin-bottom:16px}
+.hero .sub{font-size:.95rem;font-weight:500;color:var(--text-2);margin-bottom:6px}
+.hero .tagline{font-size:.72rem;color:var(--text-3);letter-spacing:1px}
+.hero-cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.h-btn{
+  display:inline-flex;align-items:center;gap:7px;padding:10px 24px;
+  font-family:var(--font);font-size:.8rem;font-weight:600;
+  border-radius:var(--r);cursor:pointer;transition:all .15s;border:none;text-decoration:none;
+}
+.h-btn-r{background:var(--red);color:#fff}
+.h-btn-r:hover{background:var(--red-dark);color:#fff}
+.h-btn-navy{background:var(--navy);color:#fff}
+.h-btn-navy:hover{background:var(--navy-2);color:#fff}
+
+/* WRAP */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.sec{padding:52px 0}
+.sec-label{font-size:.6rem;font-weight:700;letter-spacing:1px;color:var(--red);text-transform:uppercase;margin-bottom:6px}
+.sec-title{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:var(--navy);margin-bottom:6px}
+.sec-desc{color:var(--text-2);font-size:.9rem;max-width:600px;line-height:1.75}
+.divider{height:1px;background:var(--border)}
+
+/* AT A GLANCE — horizontal key facts */
+.glance{background:var(--navy);padding:36px 24px}
+.glance-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:center;gap:48px;flex-wrap:wrap;text-align:center;align-items:baseline}
+.gl-item{display:flex;flex-direction:column;align-items:center}
+.gl-num{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;letter-spacing:1px;color:var(--cyan);line-height:1}
+.gl-label{font-size:.65rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:5px}
+
+/* ABOUT CONTENT */
+.about-text{color:var(--text-2);font-size:.9rem;line-height:1.85;max-width:780px}
+.about-text p{margin-bottom:14px}
+.about-text strong{color:var(--text)}
+
+/* QUICK FACTS GRID */
+.facts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:24px}
+.fact-card{background:var(--white);border:1px solid var(--border-2);border-radius:var(--r);padding:18px;box-shadow:var(--shadow);transition:all .25s}
+.fact-card:hover{box-shadow:var(--shadow-h);transform:translateY(-2px)}
+.fact-card .fc-label{font-size:.6rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-3);margin-bottom:4px}
+.fact-card .fc-val{font-size:.9rem;font-weight:600;color:var(--text)}
+
+/* NETWORKS */
+.net-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.net-card{background:var(--white);border:1px solid var(--border-2);border-radius:var(--r);padding:24px 22px;box-shadow:var(--shadow);transition:all .2s;position:relative;overflow:hidden}
+.net-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--cyan)}
+.net-card:hover{box-shadow:var(--shadow-h);transform:translateY(-1px)}
+.net-card h4{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:6px}
+.net-card .net-tag{display:inline-block;font-size:.55rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:#e5f5fc;color:var(--cyan);padding:2px 8px;border-radius:3px;margin-bottom:10px}
+.net-card p{color:var(--text-2);font-size:.85rem;line-height:1.7}
+
+/* HISTORY */
+.hist-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:24px}
+.hist-card{background:var(--white);border:1px solid var(--border-2);border-radius:var(--r);padding:24px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hist-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--red)}
+.hist-card h4{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.hist-card .h-period{font-size:.6rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+.hist-card p{color:var(--text-2);font-size:.85rem;line-height:1.7}
+
+/* OPERATIONS */
+.ops-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:24px}
+.ops-item{display:flex;align-items:flex-start;gap:12px;background:var(--white);border:1px solid var(--border-2);border-radius:var(--r);padding:16px 18px;box-shadow:var(--shadow);transition:all .2s}
+.ops-item:hover{box-shadow:var(--shadow-h);transform:translateY(-1px)}
+.ops-dot{width:10px;height:10px;border-radius:50%;background:var(--red);flex-shrink:0;margin-top:5px}
+.ops-item span{font-size:.85rem;color:var(--text-2)}
+
+/* STRUCTURE + COMMUNITY */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
+.col-card{background:var(--white);border:1px solid var(--border-2);border-radius:var(--r);padding:28px;box-shadow:var(--shadow)}
+.col-card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:10px}
+.col-card p{color:var(--text-2);font-size:.85rem;line-height:1.75}
+.col-card p strong{color:var(--text)}
+
+/* PARTNERSHIP */
+.partner-card{background:var(--white);border:1px solid var(--border-2);border-radius:var(--r);padding:28px;box-shadow:var(--shadow);margin-top:24px;position:relative;overflow:hidden}
+.partner-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--cyan)}
+.partner-card h4{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.partner-card p{color:var(--text-2);font-size:.85rem;line-height:1.75}
+.partner-card p strong{color:var(--text)}
+
+/* FOOTER */
+footer{background:var(--navy);padding:40px 24px 24px;text-align:center}
+.f-brand{margin-bottom:6px}
+.f-brand img{height:28px;width:auto;margin:0 auto;display:block}
+.f-slogan{font-size:.68rem;color:rgba(255,255,255,.3);margin-bottom:18px}
+.f-links{display:flex;justify-content:center;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+.f-links a{font-size:.72rem;color:rgba(255,255,255,.4)}
+.f-links a:hover{color:#fff}
+.f-copy{font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.2)}
+
+/* FADE */
+.fade{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.25,.46,.45,.94),transform .6s cubic-bezier(.25,.46,.45,.94)}
+.fade.v{opacity:1;transform:translateY(0)}
+.fade-stagger>*{opacity:0;transform:translateY(16px);transition:opacity .4s cubic-bezier(.25,.46,.45,.94),transform .4s cubic-bezier(.25,.46,.45,.94)}
+.fade-stagger.v>*{opacity:1;transform:translateY(0)}
+.fade-stagger.v>*:nth-child(1){transition-delay:.05s}
+.fade-stagger.v>*:nth-child(2){transition-delay:.1s}
+.fade-stagger.v>*:nth-child(3){transition-delay:.15s}
+.fade-stagger.v>*:nth-child(4){transition-delay:.2s}
+.fade-stagger.v>*:nth-child(5){transition-delay:.25s}
+.fade-stagger.v>*:nth-child(6){transition-delay:.3s}
+.fade-stagger.v>*:nth-child(7){transition-delay:.35s}
+.fade-stagger.v>*:nth-child(8){transition-delay:.4s}
+.fade-stagger.v>*:nth-child(9){transition-delay:.45s}
+.fade-stagger.v>*:nth-child(10){transition-delay:.5s}
+
+@media(max-width:768px){
+  nav{padding:0 16px}
+  .n-links{display:none;flex-direction:column;position:absolute;top:52px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);z-index:999}
+  .n-links.open{display:flex}
+  .n-links a{display:block;padding:12px 20px;border-radius:0}
+  .n-ham{display:block}
+  .hero{padding:48px 20px 40px}
+  .wrap{padding:0 16px}
+  .sec{padding:40px 0}
+  .net-grid,.hist-grid,.two-col{grid-template-columns:1fr}
+  .glance-inner{gap:24px}
+}
+@media(max-width:480px){
+  .facts-grid{grid-template-columns:1fr 1fr}
+  .ops-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="n-inner">
+    <a href="index.html" class="n-brand"><img src="Inline Logo.png" alt="Inline"></a>
+    <ul class="n-links" id="n-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#shows">Shows</a></li>
+      <li><a href="index.html#history">History</a></li>
+      <li><a href="index.html#community">Community</a></li>
+      <li><a href="tmc.html" class="active">TMC</a></li>
+    </ul>
+    <button class="n-ham" id="n-ham"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="red-strip"></div>
+
+<!-- HERO — white bg so black TMC logo shows naturally -->
+<section class="hero">
+  <div class="fade">
+    <img src="TMC logo.png" alt="The Mishra Corporation" class="hero-logo">
+    <div class="sub">Multi-Division Digital Media Corporation</div>
+    <div class="tagline">Broadcasting &middot; Production &middot; Digital Media &middot; Radio &middot; Television</div>
+    <div class="hero-cta">
+      <a href="https://discord.gg/mishra" target="_blank" rel="noopener" class="h-btn h-btn-r">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.79 19.79 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.618-1.25.077.077 0 00-.078-.037A19.74 19.74 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.058a.08.08 0 00.031.056 19.9 19.9 0 005.993 3.04.078.078 0 00.084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.11 13.11 0 01-1.872-.892.077.077 0 01-.008-.127 10.2 10.2 0 00.372-.292.074.074 0 01.078-.01c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 01.079.01c.12.098.246.198.372.292a.077.077 0 01-.006.127 12.3 12.3 0 01-1.873.892.076.076 0 00-.041.107c.36.698.772 1.363 1.225 1.993a.076.076 0 00.084.028 19.84 19.84 0 006.002-3.04.077.077 0 00.031-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.028z"/></svg>
+        Join Discord
+      </a>
+      <a href="https://mishr4.com" target="_blank" rel="noopener" class="h-btn h-btn-navy">Website</a>
+    </div>
+  </div>
+</section>
+
+<!-- AT A GLANCE -->
+<div class="glance">
+  <div class="glance-inner">
+    <div class="gl-item"><div class="gl-num">80</div><div class="gl-label">Members</div></div>
+    <div class="gl-item"><div class="gl-num">35</div><div class="gl-label">Locations</div></div>
+    <div class="gl-item"><div class="gl-num">3</div><div class="gl-label">Networks</div></div>
+    <div class="gl-item"><div class="gl-num">5</div><div class="gl-label">Subsidiaries</div></div>
+    <div class="gl-item"><div class="gl-num">2023</div><div class="gl-label">Founded</div></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="sec">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-label">About</div>
+      <div class="sec-title">The Mishra Corporation</div>
+    </div>
+    <div class="about-text fade">
+      <p><strong>The Mishra Corporation</strong> is a Robloxian multi-division digital media corporation known for operating several major broadcast networks within the Robloxian broadcasting industry. The corporation focuses on structured media production, digital journalism, and realistic broadcast simulation across its platforms.</p>
+      <p>Through its networks, The Mishra Corporation delivers live news programming, cultural media content, and modern digital reporting to audiences across Roblox. The corporation is recognized for its professional structure, cross-network collaboration, and commitment to high-quality media production.</p>
+      <p>The Mishra Corporation was founded with the goal of creating a realistic media environment that mirrors real-world broadcasting operations. TeamMishra operates with departments, production teams, leadership roles, and active projects that resemble professional media corporations.</p>
+    </div>
+    <div class="facts-grid fade">
+      <div class="fact-card"><div class="fc-label">Trade Name</div><div class="fc-val">TMC</div></div>
+      <div class="fact-card"><div class="fc-label">Formerly</div><div class="fc-val">Studio Mishra, TM</div></div>
+      <div class="fact-card"><div class="fc-label">Industry</div><div class="fc-val">Broadcast & Mass Media</div></div>
+      <div class="fact-card"><div class="fc-label">Founded</div><div class="fc-val">2023</div></div>
+      <div class="fact-card"><div class="fc-label">Founder & CEO</div><div class="fc-val">tagnzz</div></div>
+      <div class="fact-card"><div class="fc-label">Headquarters</div><div class="fc-val">Los Angeles</div></div>
+      <div class="fact-card"><div class="fc-label">Area Served</div><div class="fc-val">United States</div></div>
+      <div class="fact-card"><div class="fc-label">Employees</div><div class="fc-val">3</div></div>
+      <div class="fact-card"><div class="fc-label">Divisions</div><div class="fc-val">2</div></div>
+      <div class="fact-card"><div class="fc-label">Website</div><div class="fc-val"><a href="https://mishr4.com" target="_blank">mishr4.com</a></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<!-- NETWORKS -->
+<section class="sec">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-label">Networks</div>
+      <div class="sec-title">Broadcast Brands</div>
+    </div>
+    <div class="net-grid fade">
+      <div class="net-card">
+        <div class="net-tag">News</div>
+        <h4>INL Noticias</h4>
+        <p>Global and regional news coverage with structured reporting, newsroom-style production, and live broadcast events.</p>
+      </div>
+      <div class="net-card">
+        <div class="net-tag">Live</div>
+        <h4>Mishra Now</h4>
+        <p>Breaking stories and live reporting with fast-paced coverage and on-the-ground style reporting within Roblox events.</p>
+      </div>
+      <div class="net-card">
+        <div class="net-tag">Digital</div>
+        <h4>RDY</h4>
+        <p>Culture, technology, and modern media — content highlighting trends, digital creativity, and media innovation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<!-- HISTORY -->
+<section class="sec">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-label">History</div>
+      <div class="sec-title">Corporate History</div>
+    </div>
+    <div class="hist-grid fade">
+      <div class="hist-card">
+        <div class="h-period">2024 &ndash; 2025</div>
+        <h4>Separation from Tahoma Digital</h4>
+        <p>As TeamMishra expanded its networks and internal structure, the organization separated from <strong>Tahoma Digital</strong> to operate independently under its own leadership and branding, allowing full focus on its own broadcast vision.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<!-- OPERATIONS -->
+<section class="sec">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-label">Operations</div>
+      <div class="sec-title">What We Do</div>
+    </div>
+    <div class="ops-grid fade">
+      <div class="ops-item"><div class="ops-dot"></div><span>Live news productions and broadcasts</span></div>
+      <div class="ops-item"><div class="ops-dot"></div><span>Digital journalism and reporting</span></div>
+      <div class="ops-item"><div class="ops-dot"></div><span>Studio operations and soundstage management</span></div>
+      <div class="ops-item"><div class="ops-dot"></div><span>Media technology and production systems</span></div>
+      <div class="ops-item"><div class="ops-dot"></div><span>Cross-network collaboration</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<!-- STRUCTURE + COMMUNITY -->
+<section class="sec">
+  <div class="wrap">
+    <div class="two-col fade">
+      <div class="col-card">
+        <h3>Organization & Structure</h3>
+        <p>TeamMishra is known for its structured internal organization. Members are divided into departments and production teams that work together on active projects. Leadership oversees network operations, production schedules, and collaboration between channels.</p>
+      </div>
+      <div class="col-card">
+        <h3>Community & Recruitment</h3>
+        <p>The Mishra Corporation actively recruits members interested in media production, journalism, design, and development. TMC has participated in the <strong>Roblox Media Conference</strong> hosted by <strong>ABU Television</strong>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<!-- PARTNERSHIPS -->
+<section class="sec">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-label">Partners</div>
+      <div class="sec-title">Partnerships</div>
+    </div>
+    <div class="partner-card fade">
+      <h4>Roblox Broadcasting Union</h4>
+      <p>The Mishra Corporation maintains a partnership with the <strong>Roblox Broadcasting Union (RBU)</strong> — focusing on collaboration between broadcast organizations, shared media standards, and joint participation in Roblox media events. Through RBU, TeamMishra works alongside other broadcasters to promote higher-quality production and a more connected Roblox media community.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-brand"><img src="Inline Logo.png" alt="Inline"></div>
+  <div class="f-slogan">The Mishra Corporation</div>
+  <div class="f-links">
+    <a href="index.html">Inline Home</a>
+    <a href="tmc.html">TMC</a>
+    <a href="https://discord.gg/mishra" target="_blank" rel="noopener">Discord</a>
+    <a href="https://www.mishr4.com" target="_blank" rel="noopener">mishr4.com</a>
+  </div>
+  <div class="f-copy">&copy; 2023&ndash;2026 The Mishra Corporation. All rights reserved.</div>
+</footer>
+
+<script>
+(function(){
+  var ham=document.getElementById('n-ham');
+  var links=document.getElementById('n-links');
+  ham.addEventListener('click',function(){links.classList.toggle('open')});
+  links.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){links.classList.remove('open')})});
+  function checkFade(){
+    document.querySelectorAll('.fade').forEach(function(el){
+      if(el.getBoundingClientRect().top<window.innerHeight-40)el.classList.add('v');
+    });
+  }
+  window.addEventListener('scroll',checkFade);
+  requestAnimationFrame(checkFade);
+})();
+</script>
+</body>
+</html>

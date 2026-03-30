@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INLINE — Leaders in Television, Radio, Production</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f2f2f4;--white:#fff;--text:#16162a;--text-2:#4a4a5e;--text-3:#8a8a9e;
+  --navy:#0d1730;--navy-2:#162040;--red:#d4213a;--red-dark:#b01a2e;--cyan:#009de0;
+  --border:#e2e2e8;--border-2:#ededf0;
+  --shadow:0 1px 3px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.03);
+  --shadow-h:0 4px 12px rgba(0,0,0,.08),0 12px 32px rgba(0,0,0,.07);
+  --r:5px;--max:1200px;
+  --font:'Inter',sans-serif;--mono:'IBM Plex Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:#0055d4;text-decoration:none;transition:color .15s}
+a:hover{color:var(--red)}
+::-webkit-scrollbar{width:7px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#c8c8d0;border-radius:4px}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--white);border-bottom:1px solid var(--border);height:52px;display:flex;align-items:center;padding:0 24px}
+.n-inner{max-width:var(--max);width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.n-brand{display:flex;align-items:center}
+.n-brand img{height:22px;width:auto;filter:brightness(0);transition:opacity .15s}
+.n-brand img:hover{opacity:.7}
+.n-links{display:flex;gap:2px;list-style:none}
+.n-links a{font-size:.8rem;font-weight:500;color:var(--text-2);padding:6px 14px;border-radius:var(--r);transition:all .15s}
+.n-links a:hover{color:var(--text);background:var(--bg)}
+.n-ham{display:none;background:none;border:none;cursor:pointer;padding:4px}
+.n-ham span{display:block;width:18px;height:2px;background:var(--text);margin:4px 0;transition:all .2s}
+.red-strip{height:3px;background:var(--red);margin-top:52px}
+
+/* ── HERO ── */
+.hero{background:var(--navy);padding:72px 24px 56px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,157,224,.07),transparent 50%,rgba(212,33,58,.05));pointer-events:none}
+.hero-inner{position:relative;z-index:1;max-width:700px;margin:0 auto;display:flex;flex-direction:column;align-items:center}
+.hero-logo{height:clamp(60px,12vw,100px);width:auto;margin-bottom:16px;display:block}
+.hero p{font-size:clamp(.82rem,1.6vw,.95rem);color:rgba(255,255,255,.5);margin-bottom:32px}
+.hero-cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.h-btn{
+  display:inline-flex;align-items:center;gap:7px;padding:10px 24px;
+  font-family:var(--font);font-size:.8rem;font-weight:600;
+  border-radius:var(--r);cursor:pointer;transition:all .2s;border:none;text-decoration:none;
+}
+.h-btn-r{background:var(--red);color:#fff}
+.h-btn-r:hover{background:var(--red-dark);color:#fff;transform:translateY(-1px);box-shadow:0 4px 14px rgba(212,33,58,.3)}
+.h-btn-o{background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.15)}
+.h-btn-o:hover{background:rgba(255,255,255,.18);color:#fff;transform:translateY(-1px)}
+
+/* ── SECTION ── */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.sec{padding:56px 0}
+.sec-label{font-size:.6rem;font-weight:700;letter-spacing:1.5px;color:var(--red);text-transform:uppercase;margin-bottom:6px}
+.sec-title{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:var(--navy);margin-bottom:6px}
+.divider{height:1px;background:var(--border)}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:36px;margin-top:28px}
+.about-text{color:var(--text-2);font-size:.9rem;line-height:1.8}
+.about-text p{margin-bottom:12px}
+.about-text strong{color:var(--text)}
+.about-text .hl{color:var(--red);font-weight:600}
+.net-list{display:flex;flex-direction:column;gap:8px}
+.net-card{
+  display:flex;align-items:center;gap:14px;padding:16px 18px;
+  background:var(--white);border:1px solid var(--border-2);border-radius:var(--r);
+  transition:all .25s;box-shadow:var(--shadow);cursor:default;
+}
+.net-card:hover{box-shadow:var(--shadow-h);transform:translateY(-3px)}
+.net-icon{
+  width:44px;height:44px;background:var(--navy);border-radius:var(--r);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.85rem;font-weight:700;letter-spacing:1px;color:#fff;flex-shrink:0;
+}
+.net-name{font-size:.9rem;font-weight:600;color:var(--text)}
+.net-sub{font-size:.75rem;color:var(--text-3);margin-top:1px}
+
+/* ── SHOWS ── */
+.shows-cat{margin-top:28px}
+.shows-cat h3{
+  font-size:1.1rem;font-weight:700;color:var(--navy);
+  margin-bottom:14px;padding-bottom:8px;border-bottom:3px solid var(--red);display:inline-block;
+}
+.shows-cat h3 span{font-weight:400;font-size:.7rem;color:var(--text-3);letter-spacing:0;margin-left:8px;vertical-align:middle}
+.shows-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.show-card{
+  background:var(--white);border:1px solid var(--border-2);border-radius:var(--r);
+  overflow:hidden;transition:all .3s cubic-bezier(.25,.46,.45,.94);box-shadow:var(--shadow);cursor:default;
+}
+.show-card:hover{box-shadow:var(--shadow-h);transform:translateY(-4px)}
+.show-card:hover .show-thumb span{color:rgba(255,255,255,.5);transform:scale(1.05)}
+.show-thumb{
+  width:100%;aspect-ratio:16/9;background:var(--navy);
+  display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+}
+.show-thumb::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--cyan);transition:height .3s}
+.show-card:hover .show-thumb::after{height:5px}
+.show-thumb span{font-size:1.2rem;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,.25);transition:all .3s}
+.show-body{padding:12px 14px}
+.show-body h4{font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:2px}
+.show-body p{font-size:.7rem;color:var(--text-3)}
+.show-card.collab .show-thumb{background:linear-gradient(135deg,#2a1520,#1a1525)}
+.show-card.collab .show-thumb::after{background:var(--red)}
+
+/* ── TIMELINE ── */
+.tl{position:relative;margin-top:28px;padding-left:28px}
+.tl::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--red),var(--border))}
+.tl-item{position:relative;margin-bottom:28px;padding-left:20px;transition:all .3s;cursor:default}
+.tl-item:hover{transform:translateX(4px)}
+.tl-item::before{
+  content:'';position:absolute;left:-25px;top:6px;width:10px;height:10px;
+  border-radius:50%;background:var(--white);border:3px solid var(--red);transition:all .3s;
+}
+.tl-item:hover::before{background:var(--red);box-shadow:0 0 0 4px rgba(212,33,58,.15)}
+.tl-year{font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:3px}
+.tl-text{color:var(--text-2);font-size:.85rem;line-height:1.7}
+.tl-text strong{color:var(--text);font-weight:600}
+
+/* ── STATS ── */
+.stats{background:var(--navy);padding:44px 24px}
+.stats-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:center;gap:64px;flex-wrap:wrap;text-align:center;align-items:baseline}
+.st-item{display:flex;flex-direction:column;align-items:center}
+.st-num{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;letter-spacing:1px;color:var(--red);line-height:1}
+.st-label{font-size:.68rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:6px}
+
+/* ── COMMUNITY ── */
+.comm-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.comm-card{
+  background:var(--white);border:1px solid var(--border-2);border-radius:var(--r);
+  padding:24px;transition:all .3s cubic-bezier(.25,.46,.45,.94);box-shadow:var(--shadow);position:relative;overflow:hidden;cursor:default;
+}
+.comm-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;transition:height .3s}
+.comm-card:first-child::before{background:var(--cyan)}
+.comm-card:last-child::before{background:var(--red)}
+.comm-card:hover{box-shadow:var(--shadow-h);transform:translateY(-3px)}
+.comm-card:hover::before{height:5px}
+.comm-card h3{font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.comm-card p{color:var(--text-2);font-size:.85rem;line-height:1.7}
+.comm-card p strong{color:var(--text)}
+.c-tag{display:inline-block;font-size:.55rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:3px;margin-bottom:10px}
+.c-tag.cy{background:#e5f5fc;color:var(--cyan)}
+.c-tag.re{background:#fdeaed;color:var(--red)}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);padding:44px 24px 24px;text-align:center}
+.f-brand{margin-bottom:6px}
+.f-brand img{height:28px;width:auto;margin:0 auto;display:block}
+.f-slogan{font-size:.72rem;color:rgba(255,255,255,.35);margin-bottom:20px}
+.f-links{display:flex;justify-content:center;gap:18px;margin-bottom:20px;flex-wrap:wrap}
+.f-links a{font-size:.75rem;color:rgba(255,255,255,.45);transition:color .15s}
+.f-links a:hover{color:#fff}
+.f-copy{font-family:var(--mono);font-size:.56rem;color:rgba(255,255,255,.2)}
+
+/* ── ANIMATIONS ── */
+.fade{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.25,.46,.45,.94),transform .6s cubic-bezier(.25,.46,.45,.94)}
+.fade.v{opacity:1;transform:translateY(0)}
+/* stagger children */
+.fade-stagger>*{opacity:0;transform:translateY(16px);transition:opacity .4s cubic-bezier(.25,.46,.45,.94),transform .4s cubic-bezier(.25,.46,.45,.94)}
+.fade-stagger.v>*{opacity:1;transform:translateY(0)}
+.fade-stagger.v>*:nth-child(1){transition-delay:.05s}
+.fade-stagger.v>*:nth-child(2){transition-delay:.1s}
+.fade-stagger.v>*:nth-child(3){transition-delay:.15s}
+.fade-stagger.v>*:nth-child(4){transition-delay:.2s}
+.fade-stagger.v>*:nth-child(5){transition-delay:.25s}
+.fade-stagger.v>*:nth-child(6){transition-delay:.3s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  nav{padding:0 16px}
+  .n-links{display:none;flex-direction:column;position:absolute;top:52px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);z-index:999}
+  .n-links.open{display:flex}
+  .n-links a{display:block;padding:12px 20px;border-radius:0}
+  .n-ham{display:block}
+  .hero{padding:56px 20px 44px}
+  .about-grid,.comm-grid{grid-template-columns:1fr}
+  .stats-inner{gap:32px}
+}
+@media(max-width:480px){
+  .shows-grid{grid-template-columns:1fr 1fr;gap:8px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="n-inner">
+    <a href="#" class="n-brand"><img src="Inline Logo.png" alt="Inline"></a>
+    <ul class="n-links" id="n-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#shows">Shows</a></li>
+      <li><a href="#history">History</a></li>
+      <li><a href="#community">Community</a></li>
+      <li><a href="tmc.html">TMC</a></li>
+    </ul>
+    <button class="n-ham" id="n-ham"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="red-strip"></div>
+
+<section class="hero" id="hero">
+  <div class="hero-inner fade">
+    <img src="Inline Logo.png" alt="Inline" class="hero-logo">
+    <p>Leaders in Television, Radio, Production</p>
+    <div class="hero-cta">
+      <a href="https://www.youtube.com" target="_blank" rel="noopener" class="h-btn h-btn-r">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/><path fill="#fff" d="M9.545 15.568V8.432L15.818 12z"/></svg>
+        YouTube
+      </a>
+      <a href="https://discord.gg/mishra" target="_blank" rel="noopener" class="h-btn h-btn-o">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.79 19.79 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.618-1.25.077.077 0 00-.078-.037A19.74 19.74 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.058a.08.08 0 00.031.056 19.9 19.9 0 005.993 3.04.078.078 0 00.084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.11 13.11 0 01-1.872-.892.077.077 0 01-.008-.127 10.2 10.2 0 00.372-.292.074.074 0 01.078-.01c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 01.079.01c.12.098.246.198.372.292a.077.077 0 01-.006.127 12.3 12.3 0 01-1.873.892.076.076 0 00-.041.107c.36.698.772 1.363 1.225 1.993a.076.076 0 00.084.028 19.84 19.84 0 006.002-3.04.077.077 0 00.031-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.028z"/></svg>
+        Discord
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-label">About</div>
+      <div class="sec-title">Who We Are</div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text fade">
+        <p><strong>Inline</strong> is the primary production and broadcast brand of <strong>The Mishra Corporation</strong>. Founded in 2023 after separating from Tahoma Digital, Inline has established itself as a driving force in the Roblox media community.</p>
+        <p>We focus on <span class="hl">original programming</span>, <span class="hl">live events</span>, and <span class="hl">broadcast projects</span> that push the boundaries of what's possible in virtual media production.</p>
+        <p>Through our networks, we deliver news, entertainment, and community programming to audiences across the Roblox platform.</p>
+      </div>
+      <div class="net-list fade fade-stagger">
+        <div class="net-card">
+          <div class="net-icon">TTM</div>
+          <div><div class="net-name">TTM News</div><div class="net-sub">Breaking news & current affairs</div></div>
+        </div>
+        <div class="net-card">
+          <div class="net-icon">RHL</div>
+          <div><div class="net-name">RHL Now</div><div class="net-sub">Entertainment & live programming</div></div>
+        </div>
+        <div class="net-card">
+          <div class="net-icon">RDY</div>
+          <div><div class="net-name">RDY</div><div class="net-sub">Digital-first content & streaming</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<section class="sec" id="shows">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-label">Programming</div>
+      <div class="sec-title">On Air</div>
+    </div>
+    <div class="shows-cat fade">
+      <h3>ORIGINAL <span>Inline Productions</span></h3>
+      <div class="shows-grid fade-stagger">
+        <div class="show-card"><div class="show-thumb"><span>YOB</span></div><div class="show-body"><h4>Year of Beefing</h4><p>Original Series</p></div></div>
+        <div class="show-card"><div class="show-thumb"><span>TRR</span></div><div class="show-body"><h4>The Rookie Roblox</h4><p>Original Series</p></div></div>
+        <div class="show-card"><div class="show-thumb"><span>BGT</span></div><div class="show-body"><h4>Bloxburg Got Talent</h4><p>Talent Competition</p></div></div>
+        <div class="show-card"><div class="show-thumb"><span>INL</span></div><div class="show-body"><h4>INL Noticias</h4><p>Spanish-Language News</p></div></div>
+        <div class="show-card"><div class="show-thumb"><span>RDR</span></div><div class="show-body"><h4>Radar</h4><p>Investigative Reports</p></div></div>
+      </div>
+    </div>
+    <div class="shows-cat fade">
+      <h3>COLLABORATIVE <span>Partner Productions</span></h3>
+      <div class="shows-grid fade-stagger">
+        <div class="show-card collab"><div class="show-thumb"><span>UNO</span></div><div class="show-body"><h4>UnoNoticias</h4><p>w/ Roblox Broadcasting Union</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<section class="sec" id="history">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-label">History</div>
+      <div class="sec-title">Our Story</div>
+    </div>
+    <div class="tl fade">
+      <div class="tl-item"><div class="tl-year">2023</div><div class="tl-text"><strong>Founded</strong> after separating from <strong>Tahoma Digital</strong>. Established as an independent production and broadcast entity under The Mishra Corporation.</div></div>
+      <div class="tl-item"><div class="tl-year">2023</div><div class="tl-text">Rebranded from <strong>TeamMishra</strong>, establishing a distinct identity in the Roblox media landscape.</div></div>
+      <div class="tl-item"><div class="tl-year">2023</div><div class="tl-text">Adopted the name <strong>Inline</strong> as directed by the <strong>Roblox Broadcasting Alliance</strong>, solidifying the brand used today.</div></div>
+      <div class="tl-item"><div class="tl-year">2025</div><div class="tl-text">Established a <strong>partnership with RBC Television Roblox</strong>, expanding collaborative broadcast capabilities and audience reach.</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner fade fade-stagger">
+    <div class="st-item"><div class="st-num" data-target="5">0</div><div class="st-label">TV Stations</div></div>
+    <div class="st-item"><div class="st-num" data-target="2">0</div><div class="st-label">TV Transmitters</div></div>
+    <div class="st-item"><div class="st-num" data-target="4">0</div><div class="st-label">Radio Stations</div></div>
+    <div class="st-item"><div class="st-num">2023</div><div class="st-label">Established</div></div>
+  </div>
+</div>
+
+<section class="sec" id="community">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-label">Community</div>
+      <div class="sec-title">Get Involved</div>
+    </div>
+    <div class="comm-grid fade-stagger">
+      <div class="comm-card">
+        <div class="c-tag cy">Discord</div>
+        <h3>Join the Server</h3>
+        <p>Connect with the Inline community on Discord. Stay updated on broadcasts, participate in events, and chat with staff and fellow viewers.</p>
+      </div>
+      <div class="comm-card">
+        <div class="c-tag re">Event</div>
+        <h3>Roblox Media Conference</h3>
+        <p>Inline participates in the <strong>Roblox Media Conference</strong> by the <strong>Aruvaldian Broadcasting Corporation</strong> — a 2-day event with booths, panels, and media group networking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-brand"><img src="Inline Logo.png" alt="Inline" style="height:28px;width:auto;margin:0 auto;display:block"></div>
+  <div class="f-slogan">Leaders in Television, Radio, Production</div>
+  <div class="f-links">
+    <a href="#hero">Home</a>
+    <a href="#about">About</a>
+    <a href="#shows">Shows</a>
+    <a href="#history">History</a>
+    <a href="#community">Community</a>
+    <a href="tmc.html">TMC</a>
+    <a href="https://www.mishr4.com" target="_blank" rel="noopener">mishr4.com</a>
+  </div>
+  <div class="f-copy">&copy; 2023&ndash;2026 Inline &mdash; A brand of The Mishra Corporation. All rights reserved.</div>
+</footer>
+
+<script>
+(function(){
+  var ham=document.getElementById('n-ham');
+  var nLinks=document.getElementById('n-links');
+  ham.addEventListener('click',function(){nLinks.classList.toggle('open')});
+  nLinks.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nLinks.classList.remove('open')})});
+
+  // Scroll reveal
+  function reveal(){
+    document.querySelectorAll('.fade,.fade-stagger').forEach(function(el){
+      if(el.getBoundingClientRect().top<window.innerHeight-40)el.classList.add('v');
+    });
+  }
+  window.addEventListener('scroll',reveal);
+  requestAnimationFrame(reveal);
+
+  // Counters
+  var counted=false;
+  function counters(){
+    if(counted)return;
+    var bar=document.querySelector('.stats');
+    if(bar&&bar.getBoundingClientRect().top<window.innerHeight-30){
+      counted=true;
+      document.querySelectorAll('.st-num[data-target]').forEach(function(el){
+        var t=parseInt(el.getAttribute('data-target')),c=0,inc=Math.max(1,Math.ceil(t/30));
+        var iv=setInterval(function(){c+=inc;if(c>=t){c=t;clearInterval(iv)}el.textContent=c},45);
+      });
+    }
+  }
+  window.addEventListener('scroll',counters);
+})();
+</script>
+</body>
+</html>
